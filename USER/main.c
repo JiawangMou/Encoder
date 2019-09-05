@@ -33,7 +33,7 @@ u16 count =0;
 
 
 u16 current_count = 0;
-u16 last_count = 0;
+
  int main(void)
  {	
 
