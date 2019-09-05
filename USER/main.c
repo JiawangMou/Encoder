@@ -46,11 +46,14 @@ u16 last_count = 0;
 
 	while(1)
 	{
-		angle = (float)(current_count - 32768) / 4000 * 360;
-		rate = 	36000.0 / (float)rate_value ;
+		angle = ((current_count - 32768) % 4000 - 2000) * 0.09;
+		if(rate_value != 0)
+			rate = 	36000.0 / (float)rate_value ;
+		else	
+			rate = 0;
 		printf("angle = %f\r\n", angle );
 		printf("rate = %.4f\r\n", rate );
-		delay_ms(100);
+		delay_ms(1000);
 	}
  
 		

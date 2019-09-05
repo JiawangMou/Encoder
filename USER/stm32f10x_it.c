@@ -79,13 +79,11 @@ void PendSV_Handler(void)
 
 #include "base_timer.h"
 
-
+extern u16 current_count;
 
 void SysTick_Handler(void)
 {
-//	last_count = current_count;
-//	current_count = TIM_GetCounter(TIM3);
-//	rate = ((float)(current_count - last_count)) /4 * 360;			//µ¥Î»ÊÇ¡ã/s
+	current_count = TIM_GetCounter(TIM3);
 	base_timer_isr();
 }
 

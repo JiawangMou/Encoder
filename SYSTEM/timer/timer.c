@@ -7,6 +7,7 @@ extern u32 rate_value;
 extern uint16_t rate_value_last;
 extern uint16_t rate_value_new;
 extern u16 count;
+
 void timer_init(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
@@ -85,8 +86,12 @@ void TIM4_IRQHandler()
 	}
 	if(TIM_GetITStatus(TIM4,TIM_IT_Update) == 1)
 	{
-		if(count == 255)
+		if(count == 2)
+		{
 			count = 0;
+			rate_value = 0;		
+		}
+
 		else
 			count++;
 		TIM_ClearFlag(TIM4,TIM_IT_Update);
